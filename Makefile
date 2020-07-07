@@ -20,9 +20,8 @@ all: lint test
 
 .PHONY: dependencies
 dependencies:
-	@echo "Installing Dep and locked dependencies..."
-	command -v dep || curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-	dep ensure
+	@echo "Installing locked dependencies..."
+	go mod vendor
 	@echo "Installing test dependencies..."
 	go get -u -f github.com/axw/gocov/gocov
 	go get -u -f github.com/mattn/goveralls
